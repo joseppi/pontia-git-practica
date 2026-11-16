@@ -1,0 +1,19 @@
+name: Demo
+
+on:
+  workflow_dispatch:
+    inputs:
+      mensaje:
+        description: 'Mensaje a mostrar'
+        required: true
+        default: 'Hola, mundo!'
+        type: string
+
+jobs:
+  mostrar-mensaje:
+    runs-on: ubuntu-latest
+    steps:
+      - name: mostrar mensaje
+        env:
+          MENSAJE: ${{ input.mensaje }}
+        run: echo $MENSAJE
